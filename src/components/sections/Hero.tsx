@@ -26,9 +26,9 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
       <div className="relative overflow-hidden rounded-[2rem] bg-hero md:rounded-[2.75rem] xl:min-h-[820px]">
         <Navbar cartCount={cartCount} onCartOpen={onCartOpen} />
         <div className="lg:hidden">
-          <div className="relative min-h-[910px] overflow-hidden">
-            <img src={heroImage} alt="Modelo vistiendo una chaqueta denim y pantalon cargo de NOIR DISTRICT" className="absolute inset-0 size-full object-cover object-right-bottom" />
-            <div className="absolute inset-0 bg-linear-to-r from-hero via-hero/78 to-transparent" aria-hidden />
+          <div className="relative h-[calc(100svh-5rem-var(--page-gutter))] overflow-hidden">
+            <img src={heroImage} alt="Modelo vistiendo una chaqueta denim y pantalon cargo de NOIR DISTRICT" className="absolute inset-0 size-full object-cover object-[87%_bottom]" />
+            <div className="absolute inset-0 bg-linear-to-r from-hero/90 via-hero/30 to-transparent" aria-hidden />
             <div className="absolute inset-x-0 top-0 z-10 px-6 pt-9">
               <p className="mb-4 flex items-center gap-2 text-[0.68rem] font-extrabold tracking-[0.16em] uppercase">
                 <Award className="size-4" aria-hidden /> {"Nueva colecci\u00f3n 2026"}
@@ -56,6 +56,31 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
                 const BenefitIcon = Icon as typeof ShieldCheck;
                 return <div key={text as string} className="flex items-center justify-center gap-2 px-2 text-center"><BenefitIcon className="size-5 shrink-0" aria-hidden /><span className="text-[0.63rem] font-extrabold leading-tight uppercase">{text as string}</span></div>;
               })}
+            </div>
+          </div>
+          <div className="hidden">
+            <form onSubmit={handleSubmit} className="flex rounded-full bg-white p-1.5 shadow-soft" role="search">
+              <label htmlFor="hero-search-mobile" className="sr-only">Buscar prendas</label>
+              <input id="hero-search-mobile" value={query} onChange={(event) => setQuery(event.target.value)} className="min-w-0 flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-muted" placeholder="Buscar prendas, colecciones..." />
+              <button type="submit" className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink" aria-label="Buscar">
+                <Search className="size-4.5" aria-hidden />
+              </button>
+            </form>
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <span className="mr-1 text-xs font-bold">Popular:</span>
+              {chips.map((chip) => (
+                <button key={chip} type="button" onClick={() => onSearch(chip)} className="rounded-full bg-white/55 px-3 py-1.5 text-xs text-ink focus-visible:outline-2 focus-visible:outline-ink">
+                  {chip}
+                </button>
+              ))}
+            </div>
+            <div className="mt-4 flex w-full items-center gap-3 rounded-3xl bg-white/88 p-3.5 shadow-soft backdrop-blur">
+              <div className="flex -space-x-3" aria-label="Comunidad de clientes">
+                {["A", "M", "L", "J"].map((initial, index) => (
+                  <span key={initial} className={`grid size-8 place-items-center rounded-full border-2 border-white text-[0.65rem] font-extrabold ${["bg-sand","bg-blue-soft","bg-stone-300","bg-stone-700 text-white"][index]}`}>{initial}</span>
+                ))}
+              </div>
+              <div><p className="text-sm font-extrabold">4.9 ?????</p><p className="text-xs text-muted">+2,000 clientes satisfechos</p></div>
             </div>
           </div>
         </div>
