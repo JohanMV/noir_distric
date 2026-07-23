@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -79,7 +79,7 @@ a {
 }
 
 .section-space {
-  padding-block: clamp(4.75rem, 8vw, 8rem);
+  padding-block: clamp(2.25rem, 3vw, 3.5rem);
 }
 
 .form-field,
@@ -150,3 +150,4 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+

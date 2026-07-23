@@ -1,11 +1,19 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+﻿import { useState, type ChangeEvent, type FormEvent } from "react";
+import { STORE_CONFIG } from "@/lib/storeConfig";
 import type {
   ContactFormErrors,
   ContactFormStatus,
   ContactFormValues,
+  ContactTopic,
 } from "@/features/contact/types";
 
-const initialValues: ContactFormValues = { name: "", email: "", message: "" };
+const initialValues: ContactFormValues = {
+  name: "",
+  email: "",
+  topic: "Quiero comprar",
+  product: "",
+  message: "",
+};
 
 export function useContactForm() {
   const [values, setValues] = useState(initialValues);
@@ -18,6 +26,12 @@ export function useContactForm() {
     const { name, value } = event.target;
     setValues((current) => ({ ...current, [name]: value }));
     setErrors((current) => ({ ...current, [name]: undefined }));
+    setStatus("idle");
+  };
+
+  const handleTopicChange = (topic: ContactTopic) => {
+    setValues((current) => ({ ...current, topic }));
+    setStatus("idle");
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -33,12 +47,26 @@ export function useContactForm() {
       return;
     }
 
+    const lines = [
+      "Hola, quiero hacer una consulta a NOIR DISTRICT.",
+      "",
+      `Nombre: ${values.name.trim()}`,
+      `Email: ${values.email.trim()}`,
+      `Consulta: ${values.topic}`,
+      values.product.trim() ? `Producto: ${values.product.trim()}` : undefined,
+      "",
+      `Mensaje: ${values.message.trim()}`,
+    ].filter(Boolean);
+
     setStatus("submitting");
-    window.setTimeout(() => {
-      setStatus("success");
-      setValues(initialValues);
-    }, 850);
+    window.open(
+      `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+    setStatus("success");
+    setValues(initialValues);
   };
 
-  return { values, errors, status, handleChange, handleSubmit };
+  return { values, errors, status, handleChange, handleTopicChange, handleSubmit };
 }
