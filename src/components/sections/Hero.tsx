@@ -48,7 +48,7 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
                 </a>
               </div>
             </div>
-            <div className="absolute top-40 right-5 z-10 grid size-23 rotate-6 place-items-center rounded-full border border-ink/10 bg-white/90 text-center shadow-soft backdrop-blur">
+            <div className="hidden">
               <p className="text-[0.58rem] leading-tight font-extrabold tracking-[0.15em] uppercase">Tu calle<br /><span className="text-lg">ND</span><br />Tus reglas</p>
             </div>
             <div className="absolute right-4 bottom-5 left-4 z-10 grid grid-cols-2 divide-x divide-ink/10 rounded-2xl bg-white/94 p-3.5 shadow-card backdrop-blur">
