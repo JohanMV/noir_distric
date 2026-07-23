@@ -3,7 +3,6 @@ import { Instagram, MessageCircle, Music2 } from "lucide-react";
 const columns = [
   { title: "Empresa", links: ["Nosotros", "Tiendas", "Trabaja con nosotros", "Prensa"] },
   { title: "Ayuda", links: ["Preguntas frecuentes", "Cambios y devoluciones", "Guía de tallas", "Seguimiento"] },
-  { title: "Soporte", links: ["Contacto", "Términos y condiciones", "Privacidad", "Libro de reclamaciones"] },
 ];
 
 export function Footer() {
@@ -27,7 +26,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          <div className="grid gap-7 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-7">
             {columns.map((column) => (
               <div key={column.title}>
                 <h3 className="text-xs font-extrabold uppercase">{column.title}</h3>
