@@ -35,7 +35,7 @@ export function FeaturedProducts({
       </div>
       <div className="mt-7 text-center">
         <a href="#/tienda" className="inline-flex min-h-12 items-center rounded-full border border-ink/20 px-7 text-sm font-extrabold transition hover:bg-ink hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
-          Ver los 6 productos
+          Ver tienda completa
         </a>
       </div>
     </section>
