@@ -1,25 +1,15 @@
-import { useState, type FormEvent } from "react";
-import { ArrowRight, Award, RotateCcw, Search, ShieldCheck, Truck } from "lucide-react";
+import { ArrowRight, Award, RotateCcw, ShieldCheck, Truck } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { heroImage } from "@/assets";
 import { Navbar } from "@/components/layout";
 
 export interface HeroProps {
   cartCount: number;
-  onSearch: (query: string) => void;
   onCartOpen: () => void;
 }
 
-const chips = ["oversize", "denim", "cargos", "básicos"];
-
-export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
-  const [query, setQuery] = useState("");
+export function Hero({ cartCount, onCartOpen }: HeroProps) {
   const reduceMotion = useReducedMotion();
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSearch(query.trim());
-  };
 
   return (
     <section className="page-shell page-shell--top" aria-labelledby="hero-title">
@@ -58,31 +48,6 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
               })}
             </div>
           </div>
-          <div className="relative z-10 px-6 pt-5 pb-8">
-            <form onSubmit={handleSubmit} className="flex rounded-full bg-white p-1.5 shadow-soft" role="search">
-              <label htmlFor="hero-search-mobile" className="sr-only">Buscar prendas</label>
-              <input id="hero-search-mobile" value={query} onChange={(event) => setQuery(event.target.value)} className="min-w-0 flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-muted" placeholder="Buscar prendas, colecciones..." />
-              <button type="submit" className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink" aria-label="Buscar">
-                <Search className="size-4.5" aria-hidden />
-              </button>
-            </form>
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              <span className="mr-1 text-xs font-bold">Popular:</span>
-              {chips.map((chip) => (
-                <button key={chip} type="button" onClick={() => onSearch(chip)} className="rounded-full bg-white/55 px-3 py-1.5 text-xs text-ink focus-visible:outline-2 focus-visible:outline-ink">
-                  {chip}
-                </button>
-              ))}
-            </div>
-            <div className="mt-4 flex w-full items-center gap-3 rounded-3xl bg-white/88 p-3.5 shadow-soft backdrop-blur">
-              <div className="flex -space-x-3" aria-label="Comunidad de clientes">
-                {["A", "M", "L", "J"].map((initial, index) => (
-                  <span key={initial} className={`grid size-8 place-items-center rounded-full border-2 border-white text-[0.65rem] font-extrabold ${["bg-sand","bg-blue-soft","bg-stone-300","bg-stone-700 text-white"][index]}`}>{initial}</span>
-                ))}
-              </div>
-              <div><p className="text-sm font-extrabold">4.9 ?????</p><p className="text-xs text-muted">+2,000 clientes satisfechos</p></div>
-            </div>
-          </div>
         </div>
         <div className="hidden lg:grid lg:min-h-[680px] lg:grid-cols-[1.06fr_0.94fr]">
           <motion.div initial={reduceMotion ? false : { opacity: 0, x: -24 }} animate={reduceMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.65, ease: "easeOut" }} className="relative z-10 flex flex-col px-6 pt-8 pb-6 md:px-10 md:py-10 lg:justify-center xl:px-14">
@@ -102,29 +67,6 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
               <a href="#/tienda" className="inline-flex min-h-10 items-center px-3 text-sm font-bold text-ink underline decoration-1 underline-offset-4 transition hover:opacity-55 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink md:min-h-12 md:rounded-full md:border md:border-ink/25 md:bg-white/30 md:px-6 md:no-underline md:hover:bg-white/65">
                 Ver catálogo
               </a>
-            </div>
-            <form onSubmit={handleSubmit} className="mt-5 flex max-w-xl rounded-full bg-white p-1.5 shadow-soft md:mt-7" role="search">
-              <label htmlFor="hero-search" className="sr-only">Buscar prendas</label>
-              <input id="hero-search" value={query} onChange={(event) => setQuery(event.target.value)} className="min-w-0 flex-1 bg-transparent px-4 text-sm outline-none placeholder:text-muted" placeholder="Buscar prendas, colecciones..." />
-              <button type="submit" className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-white transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink" aria-label="Buscar">
-                <Search className="size-4.5" aria-hidden />
-              </button>
-            </form>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="mr-1 text-xs font-bold">Popular:</span>
-              {chips.map((chip) => (
-                <button key={chip} type="button" onClick={() => onSearch(chip)} className="rounded-full bg-white/55 px-3 py-1.5 text-xs text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-ink">
-                  {chip}
-                </button>
-              ))}
-            </div>
-            <div className="mt-5 flex w-full items-center gap-3 rounded-3xl bg-white/88 p-3.5 shadow-soft backdrop-blur md:mt-9 md:w-fit md:gap-4 md:p-5">
-              <div className="flex -space-x-3" aria-label="Comunidad de clientes">
-                {["A", "M", "L", "J"].map((initial, index) => (
-                  <span key={initial} className={`grid size-8 place-items-center rounded-full border-2 border-white text-[0.65rem] font-extrabold md:size-10 md:text-xs ${["bg-sand","bg-blue-soft","bg-stone-300","bg-stone-700 text-white"][index]}`}>{initial}</span>
-                ))}
-              </div>
-              <div><p className="text-sm font-extrabold">4.9 ★★★★★</p><p className="text-xs text-muted">+2,000 clientes satisfechos</p></div>
             </div>
           </motion.div>
           <div className="relative min-h-[470px] overflow-hidden sm:min-h-[540px] lg:min-h-0">
