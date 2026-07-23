@@ -136,34 +136,36 @@ export function CatalogFilters({
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-[1fr_1.2fr_1fr_1.3fr]">
-            <label className="filter-field mt-0">
-              <span>Colección</span>
-              <select value={filters.category} onChange={(event) => onChange("category", event.target.value as ProductCategory | "Todas")}>
+            <label className="flex min-w-0 flex-col gap-3 text-xs font-extrabold uppercase">
+              <span className="leading-4">Colección</span>
+              <select value={filters.category} onChange={(event) => onChange("category", event.target.value as ProductCategory | "Todas")} className="h-12 w-full rounded-[1.1rem] border border-ink/12 bg-white px-4 text-sm font-medium normal-case outline-none transition focus:border-ink focus:ring-3 focus:ring-ink/8">
                 {categories.map((value) => <option key={value}>{value}</option>)}
               </select>
             </label>
 
-            <fieldset>
-              <legend className="text-xs font-extrabold uppercase">Talla</legend>
-              <div className="mt-2 flex flex-wrap gap-2">
+            <fieldset className="flex min-w-0 flex-col gap-3">
+              <legend className="text-xs leading-4 font-extrabold uppercase">Talla</legend>
+              <div className="flex h-12 items-center gap-2 overflow-x-auto">
                 {sizes.map((size) => (
-                  <button key={size} type="button" onClick={() => onChange("size", size)} aria-pressed={filters.size === size} className="min-w-10 rounded-full border border-ink/15 bg-white px-3 py-2 text-xs font-bold transition aria-pressed:bg-ink aria-pressed:text-white">
+                  <button key={size} type="button" onClick={() => onChange("size", size)} aria-pressed={filters.size === size} className="h-12 min-w-12 shrink-0 rounded-full border border-ink/15 bg-white px-3 text-xs font-bold transition aria-pressed:bg-ink aria-pressed:text-white">
                     {size}
                   </button>
                 ))}
               </div>
             </fieldset>
 
-            <label className="filter-field mt-0">
-              <span>Estado</span>
-              <select value={filters.badge} onChange={(event) => onChange("badge", event.target.value as ProductBadge | "Todos")}>
+            <label className="flex min-w-0 flex-col gap-3 text-xs font-extrabold uppercase">
+              <span className="leading-4">Estado</span>
+              <select value={filters.badge} onChange={(event) => onChange("badge", event.target.value as ProductBadge | "Todos")} className="h-12 w-full rounded-[1.1rem] border border-ink/12 bg-white px-4 text-sm font-medium normal-case outline-none transition focus:border-ink focus:ring-3 focus:ring-ink/8">
                 {badges.map((value) => <option key={value}>{value}</option>)}
               </select>
             </label>
 
-            <label className="block text-xs font-extrabold uppercase">
-              <span className="flex justify-between"><span>Precio máximo</span><strong>S/ {filters.maxPrice}</strong></span>
-              <input type="range" min="90" max="300" step="10" value={filters.maxPrice} onChange={(event) => onChange("maxPrice", Number(event.target.value))} className="mt-5 w-full accent-ink" />
+            <label className="flex min-w-0 flex-col gap-3 text-xs font-extrabold uppercase">
+              <span className="flex h-4 justify-between leading-4"><span>Precio máximo</span><strong>S/ {filters.maxPrice}</strong></span>
+              <span className="flex h-12 items-center">
+                <input type="range" min="90" max="300" step="10" value={filters.maxPrice} onChange={(event) => onChange("maxPrice", Number(event.target.value))} className="w-full accent-ink" />
+              </span>
             </label>
           </div>
         </aside>
