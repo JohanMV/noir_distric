@@ -65,20 +65,20 @@ export function ProductDetailModal({
   return (
     <AnimatePresence>
       {product && (
-        <motion.div initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-ink/40 p-3 backdrop-blur-sm md:p-6" onClick={onClose}>
+        <motion.div initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[70] block overflow-y-auto overscroll-contain bg-ink/40 p-3 pt-16 backdrop-blur-sm md:grid md:place-items-center md:p-6" onClick={onClose}>
           <button
             type="button"
             onClick={(event) => {
               event.stopPropagation();
               onClose();
             }}
-            className="fixed top-4 right-4 z-[80] inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-extrabold text-white shadow-card transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="fixed top-[max(1rem,env(safe-area-inset-top))] right-4 z-[80] inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-extrabold text-white shadow-card transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:top-4"
             aria-label="Cerrar detalle del producto"
           >
             <X className="size-4" aria-hidden />
             <span>Cerrar</span>
           </button>
-          <motion.div role="dialog" aria-modal="true" aria-labelledby="product-detail-title" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12 }} onClick={(event) => event.stopPropagation()} className="relative grid w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-card md:grid-cols-2">
+          <motion.div role="dialog" aria-modal="true" aria-labelledby="product-detail-title" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12 }} onClick={(event) => event.stopPropagation()} className="relative mb-3 grid w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-card md:mb-0 md:grid-cols-2">
             <div className="relative bg-card p-5 md:p-8">
               <span className="absolute top-8 left-8 z-10 rounded-full bg-sand px-3 py-1.5 text-[0.65rem] font-extrabold md:hidden">
                 {product.badge}

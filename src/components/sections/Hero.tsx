@@ -27,7 +27,7 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
         <Navbar cartCount={cartCount} onCartOpen={onCartOpen} />
         <div className="lg:hidden">
           <div className="relative h-[calc(100svh-5rem-var(--page-gutter))] overflow-hidden">
-            <img src={heroImage} alt="Modelo vistiendo una chaqueta denim y pantalon cargo de NOIR DISTRICT" className="absolute inset-0 size-full object-cover object-[87%_bottom]" />
+            <img src={heroImage} alt="Modelo vistiendo una chaqueta denim y pantalon cargo de NOIR DISTRICT" className="absolute inset-0 size-full object-cover object-[77%_bottom]" />
             <div className="absolute inset-0 bg-linear-to-r from-hero/90 via-hero/30 to-transparent" aria-hidden />
             <div className="absolute inset-x-0 top-0 z-10 px-6 pt-9">
               <p className="mb-4 flex items-center gap-2 text-[0.68rem] font-extrabold tracking-[0.16em] uppercase">
