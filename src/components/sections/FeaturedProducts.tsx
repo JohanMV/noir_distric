@@ -4,12 +4,12 @@ import type { Product } from "@/types";
 
 export interface FeaturedProductsProps {
   products: Product[];
-  onAddToCart: (product: Product) => void;
+  onSelectProduct: (product: Product) => void;
 }
 
 export function FeaturedProducts({
   products,
-  onAddToCart,
+  onSelectProduct,
 }: FeaturedProductsProps) {
   return (
     <section id="products" className="page-shell section-space scroll-mt-6" aria-labelledby="products-title">
@@ -30,11 +30,7 @@ export function FeaturedProducts({
       />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {products.slice(0, 4).map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={onAddToCart}
-          />
+          <ProductCard key={product.id} product={product} onSelectProduct={onSelectProduct} />
         ))}
       </div>
       <div className="mt-7 text-center">

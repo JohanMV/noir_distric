@@ -1,1 +1,8 @@
-export type { Product, ProductBadge } from "./product";
+export type {
+  Product,
+  ProductBadge,
+  ProductCategory,
+  ProductColor,
+  ProductSize,
+  ProductType,
+} from "./product";

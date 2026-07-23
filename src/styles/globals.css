@@ -17,6 +17,7 @@
 }
 
 :root {
+  --page-gutter: clamp(0.625rem, 1.35vw, 3rem);
   font-family: var(--font-sans);
   color: var(--color-ink);
   background: #ffffff;
@@ -42,6 +43,7 @@ body {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -57,15 +59,20 @@ a {
 }
 
 .page-shell {
-  width: min(100% - 1.25rem, 94rem);
+  width: calc(100% - (var(--page-gutter) * 2));
   margin-inline: auto;
+}
+
+.page-shell--top {
+  padding-top: var(--page-gutter);
 }
 
 .section-space {
   padding-block: clamp(4.75rem, 8vw, 8rem);
 }
 
-.form-field {
+.form-field,
+.filter-field {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
@@ -74,8 +81,14 @@ a {
   font-weight: 800;
 }
 
+.filter-field {
+  margin-top: 1.25rem;
+  text-transform: uppercase;
+}
+
 .form-field input,
-.form-field textarea {
+.form-field textarea,
+.filter-field select {
   width: 100%;
   border: 1px solid rgb(11 12 13 / 0.12);
   border-radius: 1.1rem;
@@ -88,12 +101,17 @@ a {
   transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
+.filter-field select {
+  text-transform: none;
+}
+
 .form-field textarea {
   resize: vertical;
 }
 
 .form-field input:focus,
-.form-field textarea:focus {
+.form-field textarea:focus,
+.filter-field select:focus {
   border-color: var(--color-ink);
   box-shadow: 0 0 0 3px rgb(11 12 13 / 0.08);
 }
@@ -105,12 +123,6 @@ a {
 .form-field small {
   color: #b91c1c;
   font-weight: 700;
-}
-
-@media (min-width: 768px) {
-  .page-shell {
-    width: min(100% - 2.5rem, 94rem);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

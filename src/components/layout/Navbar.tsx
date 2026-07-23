@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
+import { Menu, ShoppingBag, X } from "lucide-react";
 
 export interface NavbarProps {
   cartCount: number;
+  onCartOpen: () => void;
 }
 
 const links = [
@@ -12,7 +13,7 @@ const links = [
   { label: "Nosotros", href: "/#contact" },
 ];
 
-export function Navbar({ cartCount }: NavbarProps) {
+export function Navbar({ cartCount, onCartOpen }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +23,7 @@ export function Navbar({ cartCount }: NavbarProps) {
         <span className="leading-[0.85]">NOIR<br />DISTRICT</span>
       </a>
 
-      <div className="hidden items-center gap-6 lg:flex">
+      <div className="hidden items-center gap-7 lg:flex">
         {links.map((link) => (
           <a key={link.label} href={link.href} className="text-xs font-bold text-ink transition hover:opacity-55 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink">
             {link.label.toUpperCase()}
@@ -30,24 +31,18 @@ export function Navbar({ cartCount }: NavbarProps) {
         ))}
       </div>
 
-      <div className="hidden items-center gap-2 md:flex">
-        <button type="button" className="grid size-11 place-items-center rounded-full border border-ink/20 transition hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-ink" aria-label="Buscar">
-          <Search className="size-4.5" aria-hidden />
+      <div className="flex items-center gap-2">
+        <button type="button" onClick={onCartOpen} className="flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-bold text-white transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label={`Abrir carrito con ${cartCount} artículos`}>
+          <ShoppingBag className="size-4" aria-hidden />
+          <span className="hidden sm:inline">CARRITO</span> ({cartCount})
         </button>
-        <button type="button" className="flex min-h-11 items-center gap-2 rounded-full border border-ink/20 px-4 text-xs font-bold transition hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-ink">
-          <UserRound className="size-4" aria-hidden /> INICIAR SESIÓN
-        </button>
-        <button type="button" className="flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-bold text-white transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label={`Carrito con ${cartCount} artículos`}>
-          <ShoppingBag className="size-4" aria-hidden /> CARRITO ({cartCount})
+        <button type="button" onClick={() => setIsOpen((value) => !value)} className="grid size-11 place-items-center rounded-full border border-ink/20 text-ink lg:hidden" aria-expanded={isOpen} aria-controls="mobile-menu" aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}>
+          {isOpen ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
         </button>
       </div>
 
-      <button type="button" onClick={() => setIsOpen((value) => !value)} className="grid size-11 place-items-center rounded-full bg-ink text-white md:hidden" aria-expanded={isOpen} aria-controls="mobile-menu" aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}>
-        {isOpen ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
-      </button>
-
       {isOpen && (
-        <div id="mobile-menu" className="absolute top-[4.5rem] right-4 left-4 rounded-3xl bg-white p-4 shadow-card md:hidden">
+        <div id="mobile-menu" className="absolute top-[4.5rem] right-4 left-4 rounded-3xl bg-white p-4 shadow-card lg:hidden">
           {links.map((link) => (
             <a key={link.label} href={link.href} onClick={() => setIsOpen(false)} className="block rounded-2xl px-4 py-3 text-sm font-bold hover:bg-mist">
               {link.label}
