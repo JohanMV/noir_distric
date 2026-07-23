@@ -1,0 +1,1 @@
+export { getCatalogProducts } from "./catalogService";

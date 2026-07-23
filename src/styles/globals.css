@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0b0c0d;
+  --color-charcoal: #24272a;
+  --color-muted: #687178;
+  --color-hero: #c5d8dc;
+  --color-card: #f7f7f6;
+  --color-category: #ebeef1;
+  --color-mist: #f0f2f3;
+  --color-sand: #e8ded6;
+  --color-blue-soft: #dce5e7;
+  --shadow-soft: 0 12px 36px rgb(11 12 13 / 0.08);
+  --shadow-card: 0 24px 70px rgb(11 12 13 / 0.14);
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 15% 20%, rgb(197 216 220 / 0.16), transparent 28rem),
+    #fff;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.page-shell {
+  width: min(100% - 1.25rem, 94rem);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: clamp(4.75rem, 8vw, 8rem);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid rgb(11 12 13 / 0.12);
+  border-radius: 1.1rem;
+  background: #fff;
+  padding: 0.9rem 1rem;
+  color: var(--color-ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 3px rgb(11 12 13 / 0.08);
+}
+
+.form-field [aria-invalid="true"] {
+  border-color: #b91c1c;
+}
+
+.form-field small {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .page-shell {
+    width: min(100% - 2.5rem, 94rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
