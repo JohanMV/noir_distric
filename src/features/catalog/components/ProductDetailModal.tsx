@@ -58,10 +58,19 @@ export function ProductDetailModal({
     <AnimatePresence>
       {product && (
         <motion.div initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-ink/40 p-3 backdrop-blur-sm md:p-6" onClick={onClose}>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onClose();
+            }}
+            className="fixed top-4 right-4 z-[80] inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-extrabold text-white shadow-card transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            aria-label="Cerrar detalle del producto"
+          >
+            <X className="size-4" aria-hidden />
+            <span>Cerrar</span>
+          </button>
           <motion.div role="dialog" aria-modal="true" aria-labelledby="product-detail-title" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12 }} onClick={(event) => event.stopPropagation()} className="relative grid w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-card md:grid-cols-2">
-            <button type="button" onClick={onClose} className="absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-white/90 shadow-soft" aria-label="Cerrar detalle">
-              <X className="size-5" aria-hidden />
-            </button>
             <div className="bg-card p-5 md:p-8">
               <ProductImage product={product} className="aspect-square size-full rounded-[1.5rem] bg-white" />
             </div>
