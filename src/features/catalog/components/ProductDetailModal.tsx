@@ -80,7 +80,7 @@ export function ProductDetailModal({
           </button>
           <motion.div role="dialog" aria-modal="true" aria-labelledby="product-detail-title" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12 }} onClick={(event) => event.stopPropagation()} className="relative grid w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-card md:grid-cols-2">
             <div className="relative bg-card p-5 md:p-8">
-              <span className="absolute top-8 right-8 z-10 rounded-full bg-sand px-3 py-1.5 text-[0.65rem] font-extrabold md:hidden">
+              <span className="absolute top-8 left-8 z-10 rounded-full bg-sand px-3 py-1.5 text-[0.65rem] font-extrabold md:hidden">
                 {product.badge}
               </span>
               <ProductImage product={product} className="aspect-square size-full rounded-[1.5rem] bg-white" />
