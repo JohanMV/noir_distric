@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
   ChevronDown,
   RotateCcw,
@@ -68,6 +69,7 @@ export function CatalogFilters({
   onSortChange,
   onReset,
 }: CatalogFiltersProps) {
+  const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -126,8 +128,15 @@ export function CatalogFilters({
         </div>
       </div>
 
+      <AnimatePresence initial={false}>
       {isOpen && (
-        <aside id="catalog-filter-panel" className="mt-3 rounded-[1.6rem] border border-white/80 bg-white/80 p-5 shadow-soft">
+        <motion.aside
+          id="catalog-filter-panel"
+          initial={reduceMotion ? false : { opacity: 0, height: 0, y: -8 }}
+          animate={{ opacity: 1, height: "auto", y: 0 }}
+          exit={reduceMotion ? undefined : { opacity: 0, height: 0, y: -8 }}
+          transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeOut" }}
+          className="mt-3 overflow-hidden rounded-[1.6rem] border border-white/80 bg-white/80 p-5 shadow-soft">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-sm font-extrabold uppercase">Más filtros</h2>
             <button type="button" onClick={onReset} disabled={!hasActiveFilters} className="inline-flex items-center gap-1.5 text-xs font-bold text-muted underline underline-offset-4 disabled:opacity-35">
@@ -175,8 +184,9 @@ export function CatalogFilters({
               </span>
             </label>
           </div>
-        </aside>
+        </motion.aside>
       )}
+      </AnimatePresence>
     </div>
   );
 }
