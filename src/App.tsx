@@ -46,6 +46,8 @@ export default function App() {
         <ShopPage
           products={products}
           searchQuery={getSearchQuery()}
+          cartCount={cart.count}
+          onCartOpen={cart.openCart}
           onSelectProduct={setSelectedProduct}
         />
       ) : (
