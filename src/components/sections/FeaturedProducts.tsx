@@ -12,7 +12,7 @@ export function FeaturedProducts({
   onSelectProduct,
 }: FeaturedProductsProps) {
   return (
-    <section id="products" className="page-shell section-space scroll-mt-6" aria-labelledby="products-title">
+    <section id="products" className="content-shell section-space scroll-mt-6" aria-labelledby="products-title">
       <SectionHeading
         eyebrow="Selección de la semana"
         title="Más buscados"

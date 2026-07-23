@@ -69,7 +69,7 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
             </div>
           </motion.div>
           <div className="relative min-h-[560px] overflow-hidden lg:min-h-0">
-            <img src={heroImage} alt="Modelo vistiendo una chaqueta denim y pantalón cargo de NOIR DISTRICT" className="absolute inset-0 size-full object-cover object-[62%_center]" />
+            <img src={heroImage} alt="Modelo vistiendo una chaqueta denim y pantalón cargo de NOIR DISTRICT" className="absolute inset-0 size-full object-cover object-right-bottom" />
             <div className="absolute inset-0 bg-linear-to-r from-hero via-transparent to-transparent lg:from-hero/60" aria-hidden />
             <div className="absolute top-8 right-6 grid size-28 rotate-6 place-items-center rounded-full border border-ink/10 bg-white/88 text-center shadow-soft backdrop-blur md:right-10">
               <p className="text-[0.65rem] leading-tight font-extrabold tracking-[0.15em] uppercase">Tu calle<br /><span className="text-xl">ND</span><br />Tus reglas</p>

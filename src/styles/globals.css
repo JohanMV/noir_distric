@@ -67,6 +67,17 @@ a {
   padding-top: var(--page-gutter);
 }
 
+.content-shell {
+  width: min(100% - 1.25rem, 94rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .content-shell {
+    width: min(100% - 2.5rem, 94rem);
+  }
+}
+
 .section-space {
   padding-block: clamp(4.75rem, 8vw, 8rem);
 }

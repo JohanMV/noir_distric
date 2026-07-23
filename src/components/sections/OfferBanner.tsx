@@ -5,7 +5,7 @@ export function OfferBanner() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="page-shell section-space" aria-labelledby="offer-title">
+    <section className="content-shell section-space" aria-labelledby="offer-title">
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, scale: 0.985 }}
         whileInView={reduceMotion ? undefined : { opacity: 1, scale: 1 }}

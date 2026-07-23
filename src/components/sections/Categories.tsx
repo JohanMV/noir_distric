@@ -34,7 +34,7 @@ export function Categories() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="categories" className="page-shell section-space scroll-mt-6" aria-labelledby="categories-title">
+    <section id="categories" className="content-shell section-space scroll-mt-6" aria-labelledby="categories-title">
       <SectionHeading
         eyebrow="Encuentra tu uniforme"
         title="Colecciones urbanas"

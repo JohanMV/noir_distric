@@ -8,7 +8,7 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="page-shell pb-5 pt-12">
+    <footer className="content-shell pb-5 pt-12">
       <div className="rounded-[2rem] bg-mist px-6 py-10 md:px-10">
         <div className="grid gap-10 border-b border-ink/10 pb-9 lg:grid-cols-[1.3fr_2fr]">
           <div>

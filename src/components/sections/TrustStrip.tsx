@@ -9,7 +9,7 @@ const items = [
 
 export function TrustStrip() {
   return (
-    <section className="page-shell py-4" aria-label="Beneficios de compra">
+    <section className="content-shell py-4" aria-label="Beneficios de compra">
       <div className="grid overflow-hidden rounded-[1.8rem] bg-mist sm:grid-cols-2 xl:grid-cols-4">
         {items.map(([Icon, title, text], index) => {
           const ItemIcon = Icon as typeof Truck;

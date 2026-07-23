@@ -23,7 +23,7 @@ export function ContactSection({
   onSubmit,
 }: ContactSectionProps) {
   return (
-    <section id="contact" className="page-shell section-space scroll-mt-6" aria-labelledby="contact-title">
+    <section id="contact" className="content-shell section-space scroll-mt-6" aria-labelledby="contact-title">
       <SectionHeading
         eyebrow="Hablemos"
         title="Estamos cerca"
