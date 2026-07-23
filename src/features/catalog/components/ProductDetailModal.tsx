@@ -17,6 +17,14 @@ const currency = new Intl.NumberFormat(STORE_CONFIG.locale, {
   currency: STORE_CONFIG.currency,
 });
 
+const colorSwatches: Record<ProductColor, string> = {
+  Negro: "#0b0c0d",
+  Blanco: "#f7f7f6",
+  Hueso: "#e8ded6",
+  "Azul lavado": "#9eb6c7",
+  "Gris carbón": "#3e4144",
+};
+
 export function ProductDetailModal({
   product,
   onClose,
@@ -71,12 +79,15 @@ export function ProductDetailModal({
             <span>Cerrar</span>
           </button>
           <motion.div role="dialog" aria-modal="true" aria-labelledby="product-detail-title" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12 }} onClick={(event) => event.stopPropagation()} className="relative grid w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-card md:grid-cols-2">
-            <div className="bg-card p-5 md:p-8">
+            <div className="relative bg-card p-5 md:p-8">
+              <span className="absolute top-8 right-8 z-10 rounded-full bg-sand px-3 py-1.5 text-[0.65rem] font-extrabold md:hidden">
+                {product.badge}
+              </span>
               <ProductImage product={product} className="aspect-square size-full rounded-[1.5rem] bg-white" />
             </div>
             <div className="flex flex-col justify-center p-6 md:p-10">
-              <span className="w-fit rounded-full bg-sand px-3 py-1.5 text-[0.65rem] font-extrabold">{product.badge}</span>
-              <h2 id="product-detail-title" className="mt-5 text-3xl font-extrabold tracking-[-0.045em] uppercase md:text-4xl">{product.name}</h2>
+              <span className="hidden w-fit rounded-full bg-sand px-3 py-1.5 text-[0.65rem] font-extrabold md:inline-flex">{product.badge}</span>
+              <h2 id="product-detail-title" className="mt-0 text-3xl font-extrabold tracking-[-0.045em] uppercase md:mt-5 md:text-4xl">{product.name}</h2>
               <p className="mt-3 leading-relaxed text-muted">{product.longDescription}</p>
               <p className="mt-5 text-3xl font-extrabold tracking-[-0.05em]">{currency.format(product.price)}</p>
 
@@ -92,7 +103,15 @@ export function ProductDetailModal({
               </fieldset>
               <fieldset className="mt-5">
                 <legend className="text-xs font-extrabold uppercase">Color</legend>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-3 md:hidden">
+                  {product.colors.map((value) => (
+                    <button key={value} type="button" onClick={() => setColor(value)} aria-pressed={color === value} className="inline-flex h-12 items-center gap-3 rounded-full border border-ink/15 bg-white px-4 text-base font-medium transition aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">
+                      <span className={`size-8 rounded-full border-2 ${color === value ? "border-white/90" : "border-ink/15"}`} style={{ backgroundColor: colorSwatches[value] }} aria-hidden />
+                      {value}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-2 hidden flex-wrap gap-2 md:flex">
                   {product.colors.map((value) => (
                     <button key={value} type="button" onClick={() => setColor(value)} aria-pressed={color === value} className="rounded-full border border-ink/15 px-4 py-2 text-xs font-bold transition aria-pressed:bg-ink aria-pressed:text-white">
                       {value}
