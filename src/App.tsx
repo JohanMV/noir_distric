@@ -29,6 +29,9 @@ export default function App() {
   const view = useHashRoute();
   const cart = useCart();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const handleSearch = (query: string) => {
+    window.location.hash = `/tienda${query ? `?q=${encodeURIComponent(query)}` : ""}`;
+  };
 
   const handleAddToCart = (input: AddToCartInput) => {
     cart.addToCart(input);
@@ -50,6 +53,7 @@ export default function App() {
         <main>
           <Hero
             cartCount={cart.count}
+            onSearch={handleSearch}
             onCartOpen={cart.openCart}
           />
           <Categories />
