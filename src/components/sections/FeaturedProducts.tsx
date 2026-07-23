@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+﻿import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ProductCard, SectionHeading } from "@/components/ui";
 import type { Product } from "@/types";
 
@@ -14,9 +14,9 @@ export function FeaturedProducts({
   return (
     <section id="products" className="content-shell section-space scroll-mt-6" aria-labelledby="products-title">
       <SectionHeading
-        eyebrow="Selección de la semana"
-        title="Más buscados"
-        description="Los favoritos de nuestra comunidad: cortes versátiles, materiales honestos y stock limitado."
+        eyebrow="SelecciÃ³n de la semana"
+        title="MÃ¡s buscados"
+        description="Los favoritos de nuestra comunidad: cortes versÃ¡tiles, materiales honestos y stock limitado."
         action={
           <div className="hidden shrink-0 gap-2 sm:flex" aria-label="Controles del carrusel">
             <button type="button" className="grid size-12 place-items-center rounded-full border border-ink/25 transition hover:bg-mist focus-visible:outline-2 focus-visible:outline-ink" aria-label="Productos anteriores">
@@ -34,10 +34,11 @@ export function FeaturedProducts({
         ))}
       </div>
       <div className="mt-7 text-center">
-        <a href="#/tienda" className="inline-flex min-h-12 items-center rounded-full border border-ink/20 px-7 text-sm font-extrabold transition hover:bg-ink hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+        <a href="#/tienda" className="inline-flex min-h-12 items-center rounded-full bg-ink px-7 text-sm font-extrabold text-white transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
           Ver tienda completa
         </a>
       </div>
     </section>
   );
 }
+
