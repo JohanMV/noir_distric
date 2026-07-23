@@ -85,7 +85,7 @@ export function CatalogFilters({
           />
         </label>
 
-        <div className="-mx-1 flex min-w-0 gap-2 overflow-x-auto px-1 pb-1 xl:flex-1 xl:justify-center xl:pb-0">
+        <div className="-mx-1 hidden min-w-0 gap-2 overflow-x-auto px-1 pb-1 md:flex xl:flex-1 xl:justify-center xl:pb-0">
           {types.map((type) => (
             <button
               key={type}
@@ -142,6 +142,13 @@ export function CatalogFilters({
                 {categories.map((value) => <option key={value}>{value}</option>)}
               </select>
             </label>
+            <label className="flex min-w-0 flex-col gap-3 text-xs font-extrabold uppercase md:hidden">
+              <span className="leading-4">Tipo de prenda</span>
+              <select value={filters.type} onChange={(event) => onChange("type", event.target.value as ProductType | "Todos")} className="h-12 w-full rounded-[1.1rem] border border-ink/12 bg-white px-4 text-sm font-medium normal-case outline-none transition focus:border-ink focus:ring-3 focus:ring-ink/8">
+                {types.map((value) => <option key={value} value={value}>{typeLabels[value]}</option>)}
+              </select>
+            </label>
+
 
             <fieldset className="flex min-w-0 flex-col gap-3">
               <legend className="text-xs leading-4 font-extrabold uppercase">Talla</legend>
