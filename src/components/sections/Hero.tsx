@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Award, RotateCcw, Search, ShieldCheck, Truck } from "lucide-react";
+import { ArrowRight, Award, RotateCcw, Search, Truck } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { heroImage } from "@/assets";
 import { Navbar } from "@/components/layout";
@@ -53,7 +53,7 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
             </div>
             <div className="absolute right-4 bottom-5 left-4 z-10 grid grid-cols-2 divide-x divide-ink/10 rounded-2xl bg-white/94 p-3.5 shadow-card backdrop-blur">
               {[[Truck, "Env\u00edos a todo el Per\u00fa"], [RotateCcw, "Cambios en 14 d\u00edas"]].map(([Icon, text]) => {
-                const BenefitIcon = Icon as typeof ShieldCheck;
+                const BenefitIcon = Icon as typeof Truck;
                 return <div key={text as string} className="flex items-center justify-center gap-2 px-2 text-center"><BenefitIcon className="size-5 shrink-0" aria-hidden /><span className="text-[0.63rem] font-extrabold leading-tight uppercase">{text as string}</span></div>;
               })}
             </div>
@@ -80,7 +80,7 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
                   <span key={initial} className={`grid size-8 place-items-center rounded-full border-2 border-white text-[0.65rem] font-extrabold ${["bg-sand","bg-blue-soft","bg-stone-300","bg-stone-700 text-white"][index]}`}>{initial}</span>
                 ))}
               </div>
-              <div><p className="text-sm font-extrabold">4.9 ?????</p><p className="text-xs text-muted">+2,000 clientes satisfechos</p></div>
+              <div><p className="text-sm font-extrabold">4.9 ★★★★★</p><p className="text-xs text-muted">+2,000 clientes satisfechos</p></div>
             </div>
           </div>
         </div>
@@ -134,15 +134,9 @@ export function Hero({ cartCount, onSearch, onCartOpen }: HeroProps) {
               <p className="text-[0.58rem] leading-tight font-extrabold tracking-[0.15em] uppercase md:text-[0.65rem]">Tu calle<br /><span className="text-lg md:text-xl">ND</span><br />Tus reglas</p>
             </div>
             <div className="absolute right-4 bottom-4 left-4 grid grid-cols-2 divide-x divide-ink/10 rounded-2xl bg-white/92 p-3 shadow-card backdrop-blur md:hidden">
-              {[[Truck, "Env?os a todo el Per?"], [RotateCcw, "Cambios en 14 d?as"]].map(([Icon, text]) => {
-                const BenefitIcon = Icon as typeof ShieldCheck;
+              {[[Truck, "Envíos a todo el Perú"], [RotateCcw, "Cambios en 14 días"]].map(([Icon, text]) => {
+                const BenefitIcon = Icon as typeof Truck;
                 return <div key={text as string} className="flex items-center justify-center gap-2 px-2 text-center"><BenefitIcon className="size-4 shrink-0" aria-hidden /><span className="text-[0.63rem] font-extrabold leading-tight uppercase">{text as string}</span></div>;
-              })}
-            </div>
-            <div className="absolute right-5 bottom-6 left-5 hidden rounded-[1.6rem] bg-white/92 p-5 shadow-card backdrop-blur md:right-8 md:bottom-8 md:left-auto md:block md:w-72">
-              {[[ShieldCheck, "Calidad garantizada"], [Truck, "Envío rápido a todo Perú"], [RotateCcw, "Cambios simples por 14 días"]].map(([Icon, text]) => {
-                const BenefitIcon = Icon as typeof ShieldCheck;
-                return <div key={text as string} className="flex items-center gap-3 py-2.5"><span className="grid size-9 place-items-center rounded-full bg-mist"><BenefitIcon className="size-4" aria-hidden /></span><span className="text-xs font-bold">{text as string}</span></div>;
               })}
             </div>
           </div>
